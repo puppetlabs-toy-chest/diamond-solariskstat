@@ -11,16 +11,18 @@ if os.name == 'nt':
     base_files = os.path.join(pgm_files, 'diamond')
 
 if os.name == 'nt':
-    data_files.append((os.path.join(base_files, 'collectors/solariskstat'), ['src/collectors/solariskstat/solarisfs.py', 'src/collectors/solariskstat/solarisarc.py']))
+    data_files.append((os.path.join(base_files, 'collectors/solariskstat'), glob('src/collectors/solariskstat/*')))
+    data_files.append((os.path.join(base_files, 'collectors/solariskstat'), []))
 else:
-    data_files.append(('share/diamond/collectors/solariskstat', ['src/collectors/solariskstat/solarisfs.py', 'src/collectors/solariskstat/solarisarc.py']))
+    data_files.append(('share/diamond/collectors/solariskstat/', glob('src/collectors/solariskstat/*')))
+    data_files.append(('share/diamond/collectors/solariskstat', []))
 
 setup(
     name = "diamond-solariskstat",
     version = "0.1",
     package_dir = {'': 'src'},
-    data_files = data_files,
     packages = find_packages(),
+    data_files = data_files,
     author = "Puppet Labs",
     author_email = "info@puppetlabs.com",
     description = "Collection of diamond collectors that extract data from Solaris kstats.",
