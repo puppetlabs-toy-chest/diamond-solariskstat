@@ -19,7 +19,7 @@ else:
 
 setup(
     name = "diamond-solariskstat",
-    version = "0.1",
+    version = "0.2",
     package_dir = {'': 'src'},
     packages = find_packages(),
     data_files = data_files,
